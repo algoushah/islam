@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#047857" />
+  <meta name="description" content="موقع إسلامي عربي شامل: القرآن الكريم، الأحاديث، المذاهب، الأذكار، عداد تسبيح وأوقات الصلاة." />
+  <title>Ayoub | موقع إسلامي</title>
+
+  <!-- PWA Manifest داخل نفس الملف -->
+  <link
+    rel="manifest"
+    href='data:application/manifest+json,{
+      "name":"Ayoub Islamic",
+      "short_name":"Ayoub",
+      "description":"موقع إسلامي عربي شامل",
+      "start_url":".",
+      "display":"standalone",
+      "background_color":"#ecfdf5",
+      "theme_color":"#047857",
+      "dir":"rtl",
+      "lang":"ar",
+      "icons":[
+        {
+          "src":"https://ik.imagekit.io/imgayoub/LOGO/ayoubpw.png",
+          "sizes":"192x192",
+          "type":"image/png"
+        },
+        {
+          "src":"https://ik.imagekit.io/imgayoub/LOGO/ayoubpw.png",
+          "sizes":"512x512",
+          "type":"image/png"
+        }
+      ]
+    }'
+  />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind = {
+      config: {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              arabic: ["Noto Naskh Arabic", "serif"]
+            },
+            boxShadow: {
+              soft: "0 20px 50px rgba(2, 44, 34, 0.12)"
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.78);
+    }
+
+    .ayah-text {
+      line-height: 2.35;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+
+<body class="bg-emerald-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="fixed top-0 right-0 left-0 z-50 border-b border-white/30 dark:border-slate-800/80 glass">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-3">
+        <img
+          src="https://ik.imagekit.io/imgayoub/LOGO/ayoubpw.png"
+          alt="Ayoub Logo"
+          class="w-11 h-11 rounded-2xl object-contain bg-white p-1 shadow"
+        />
+        <div>
+          <h1 class="text-xl font-bold text-emerald-800 dark:text-emerald-300 leading-none">Ayoub</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">موقع إسلامي شامل</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a class="nav-link" href="#home">الرئيسية</a>
+        <a class="nav-link" href="#quran">القرآن</a>
+        <a class="nav-link" href="#hadith">الأحاديث</a>
+        <a class="nav-link" href="#madhahib">المذاهب</a>
+        <a class="nav-link" href="#azkar">أذكار</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button
+          id="darkModeBtn"
+          class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-100 dark:hover:bg-slate-700 transition flex items-center justify-center"
+          aria-label="تبديل الوضع الليلي"
+          title="الوضع الليلي"
+        >
+          <span id="darkIcon">🌙</span>
+        </button>
+
+        <button
+          id="menuBtn"
+          class="md:hidden w-10 h-10 rounded-2xl bg-emerald-700 text-white flex items-center justify-center"
+          aria-label="فتح القائمة"
+        >
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav
+      id="mobileMenu"
+      class="hidden md:hidden px-4 pb-4 max-w-7xl mx-auto"
+    >
+      <div class="grid gap-2 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-slate-800 rounded-3xl p-3 shadow-soft">
+        <a class="mobile-link" href="#home">الرئيسية</a>
+        <a class="mobile-link" href="#quran">القرآن</a>
+        <a class="mobile-link" href="#hadith">الأحاديث</a>
+        <a class="mobile-link" href="#madhahib">المذاهب</a>
+        <a class="mobile-link" href="#azkar">أذكار</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24">
+
+    <!-- Hero -->
+    <section id="home" class="min-h-screen px-4 py-10 flex items-center bg-gradient-to-br from-emerald-700 via-teal-600 to-sky-700">
+      <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-8 items-center">
+        <div class="text-white">
+          <span class="inline-flex items-center gap-2 bg-white/15 border border-white/20 px-4 py-2 rounded-full text-sm mb-5">
+            ✨ مرحبًا بك في Ayoub
+          </span>
+
+          <h2 class="text-4xl md:text-6xl font-bold leading-tight">
+            بسم الله الرحمن الرحيم
+          </h2>
+
+          <p class="mt-5 text-lg md:text-xl text-emerald-50 leading-9 max-w-2xl">
+            موقع إسلامي عام بدون تسجيل دخول، يجمع القرآن الكريم، الأحاديث النبوية،
+            تعريفًا بالمذاهب الأربعة، الأذكار، عداد التسبيح وأوقات الصلاة.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+            <a href="#quran" class="hero-btn">📖 القرآن</a>
+            <a href="#hadith" class="hero-btn">🕌 الأحاديث</a>
+            <a href="#madhahib" class="hero-btn">📚 المذاهب</a>
+            <a href="#azkar" class="hero-btn">🤲 أذكار</a>
+          </div>
+        </div>
+
+        <div class="bg-white/15 border border-white/20 rounded-[2rem] p-4 shadow-soft">
+          <div class="bg-white dark:bg-slate-900 rounded-[1.5rem] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&w=1200&q=80"
+              alt="مسجد"
+              class="w-full h-72 sm:h-96 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-emerald-800 dark:text-emerald-300">بطاقة ترحيب</h3>
+              <p class="mt-2 text-slate-600 dark:text-slate-300 leading-8">
+                نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم، ونافعًا لكل من يزوره.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quran -->
+    <section id="quran" class="section-wrap">
+      <div class="section-head">
+        <span class="section-badge">📖 القرآن الكريم</span>
+        <h2 class="section-title">تصفح السور واستمع للتلاوة</h2>
+        <p class="section-desc">
+          ابحث عن السورة، اخترها، ثم اقرأ الآيات كاملة مع إمكانية تشغيل تلاوة لكل آية.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6">
+        <!-- Surah List -->
+        <aside class="lg:col-span-4 bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 p-4">
+          <label for="surahSearch" class="block font-bold mb-2">بحث عن سورة</label>
+          <input
+            id="surahSearch"
+            type="search"
+            placeholder="مثال: الفاتحة، البقرة..."
+            class="input"
+          />
+
+          <div class="flex items-center justify-between gap-3 mt-4 mb-3">
+            <h3 class="font-bold text-emerald-800 dark:text-emerald-300">قائمة السور</h3>
+            <button id="reloadSurahsBtn" class="small-btn">تحديث</button>
+          </div>
+
+          <div
+            id="surahList"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 max-h-[560px] overflow-auto hide-scrollbar pr-1"
+          >
+            <p class="text-slate-500">جاري تحميل السور...</p>
+          </div>
+        </aside>
+
+        <!-- Reader -->
+        <div class="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <span class="section-badge">استماع وقراءة</span>
+              <h3 id="surahTitle" class="text-2xl font-bold mt-2">اختر سورة للعرض</h3>
+              <p id="surahMeta" class="text-slate-500 dark:text-slate-400 mt-1">سيتم عرض الآيات هنا.</p>
+            </div>
+
+            <audio id="quranAudio" controls class="w-full sm:w-72"></audio>
+          </div>
+
+          <div id="ayahsContainer" class="mt-6 space-y-4">
+            <div class="rounded-3xl bg-emerald-50 dark:bg-slate-800 p-6 text-center">
+              <p class="text-xl font-bold text-emerald-800 dark:text-emerald-300">بسم الله</p>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">
+                اختر سورة من القائمة لعرض الآيات.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hadith -->
+    <section id="hadith" class="section-wrap bg-white/50 dark:bg-slate-900/30">
+      <div class="section-head">
+        <span class="section-badge">🕌 الأحاديث النبوية</span>
+        <h2 class="section-title">بحث وتصنيف الأحاديث</h2>
+        <p class="section-desc">
+          اختر التصنيف ثم ابحث داخل الأحاديث المعروضة. يتم الاعتماد على API خارجي مع fallback ثابت عند تعذر الاتصال.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 p-4 sm:p-6">
+        <div class="grid md:grid-cols-3 gap-3">
+          <div>
+            <label for="hadithBook" class="block font-bold mb-2">التصنيف</label>
+            <select id="hadithBook" class="input">
+              <option value="bukhari">صحيح البخاري</option>
+              <option value="muslim">صحيح مسلم</option>
+            </select>
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="hadithSearch" class="block font-bold mb-2">بحث في الأحاديث</label>
+            <input
+              id="hadithSearch"
+              type="search"
+              placeholder="اكتب كلمة للبحث..."
+              class="input"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-4">
+          <p id="hadithStatus" class="text-slate-500 dark:text-slate-400">جاري التحميل...</p>
+          <button id="loadHadithBtn" class="primary-btn sm:w-auto">تحميل الأحاديث</button>
+        </div>
+
+        <div id="hadithList" class="grid md:grid-cols-2 gap-4 mt-6">
+          <!-- Hadith cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Madhahib -->
+    <section id="madhahib" class="section-wrap">
+      <div class="section-head">
+        <span class="section-badge">📚 المذاهب الفقهية</span>
+        <h2 class="section-title">المذاهب الأربعة</h2>
+        <p class="section-desc">
+          تعريف مختصر بالمذاهب الفقهية السنية الأربعة مع جدول اختلافات مبسط في بعض المسائل.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <article class="madhhab-card">
+          <div class="madhhab-icon">ح</div>
+          <h3 class="madhhab-title">المذهب الحنفي</h3>
+          <p class="madhhab-text">
+            ينسب إلى الإمام أبي حنيفة النعمان، ويتميز بالعناية بالقياس والاستحسان، وانتشر في العراق وبلاد الشام وتركيا وآسيا الوسطى.
+          </p>
+        </article>
+
+        <article class="madhhab-card">
+          <div class="madhhab-icon">م</div>
+          <h3 class="madhhab-title">المذهب المالكي</h3>
+          <p class="madhhab-text">
+            ينسب إلى الإمام مالك بن أنس، ويهتم بعمل أهل المدينة، وانتشر في المغرب العربي والأندلس وأجزاء من إفريقيا.
+          </p>
+        </article>
+
+        <article class="madhhab-card">
+          <div class="madhhab-icon">ش</div>
+          <h3 class="madhhab-title">المذهب الشافعي</h3>
+          <p class="madhhab-text">
+            ينسب إلى الإمام محمد بن إدريس الشافعي، ويشتهر بتأصيل علم أصول الفقه، وانتشر في مصر والشام واليمن وشرق آسيا.
+          </p>
+        </article>
+
+        <article class="madhhab-card">
+          <div class="madhhab-icon">ن</div>
+          <h3 class="madhhab-title">المذهب الحنبلي</h3>
+          <p class="madhhab-text">
+            ينسب إلى الإمام أحمد بن حنبل، ويغلب عليه التمسك بالنصوص والآثار، وانتشر في الجزيرة العربية وغيرها.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-8 bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 overflow-hidden">
+        <div class="p-5 border-b border-emerald-100 dark:border-slate-800">
+          <h3 class="text-2xl font-bold text-emerald-800 dark:text-emerald-300">جدول اختلافات مبسط</h3>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">
+            هذا الجدول للتثقيف العام، ولا يغني عن سؤال أهل العلم في النوازل والمسائل التفصيلية.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-right min-w-[780px]">
+            <thead class="bg-emerald-700 text-white">
+              <tr>
+                <th class="table-cell">المسألة</th>
+                <th class="table-cell">الحنفي</th>
+                <th class="table-cell">المالكي</th>
+                <th class="table-cell">الشافعي</th>
+                <th class="table-cell">الحنبلي</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-emerald-100 dark:divide-slate-800">
+              <tr class="hover:bg-emerald-50 dark:hover:bg-slate-800 transition">
+                <td class="table-cell font-bold">رفع اليدين في الصلاة</td>
+                <td class="table-cell">غالبًا عند تكبيرة الإحرام فقط</td>
+                <td class="table-cell">عند تكبيرة الإحرام، وفي روايات مواضع أخرى</td>
+                <td class="table-cell">عند الإحرام والركوع والرفع منه</td>
+                <td class="table-cell">عند الإحرام والركوع والرفع منه</td>
+              </tr>
+              <tr class="hover:bg-emerald-50 dark:hover:bg-slate-800 transition">
+                <td class="table-cell font-bold">قراءة الفاتحة للمأموم</td>
+                <td class="table-cell">لا يقرأ خلف الإمام في الجهرية</td>
+                <td class="table-cell">تستحب في السرية دون الجهرية غالبًا</td>
+                <td class="table-cell">واجبة على المأموم</td>
+                <td class="table-cell">تجب أو تستحب بحسب الحال والرواية</td>
+              </tr>
+              <tr class="hover:bg-emerald-50 dark:hover:bg-slate-800 transition">
+                <td class="table-cell font-bold">زكاة الحلي المستعمل</td>
+                <td class="table-cell">تجب إذا بلغ النصاب</td>
+                <td class="table-cell">لا تجب غالبًا في المباح المستعمل</td>
+                <td class="table-cell">لا تجب غالبًا في المباح المستعمل</td>
+                <td class="table-cell">لا تجب غالبًا في المباح المستعمل</td>
+              </tr>
+              <tr class="hover:bg-emerald-50 dark:hover:bg-slate-800 transition">
+                <td class="table-cell font-bold">وقت إخراج زكاة الفطر</td>
+                <td class="table-cell">يجوز تقديمها قبل العيد</td>
+                <td class="table-cell">تخرج قبل صلاة العيد، ويجوز تقديمها بيوم أو يومين</td>
+                <td class="table-cell">يجوز من أول رمضان عند بعض الأقوال</td>
+                <td class="table-cell">يجوز قبل العيد بيوم أو يومين</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Azkar & Extras -->
+    <section id="azkar" class="section-wrap bg-white/50 dark:bg-slate-900/30">
+      <div class="section-head">
+        <span class="section-badge">🤲 أذكار وإضافات</span>
+        <h2 class="section-title">عداد التسبيح وأوقات الصلاة</h2>
+        <p class="section-desc">
+          سبّح بسهولة، وتابع أوقات الصلاة حسب مدينة فيينا افتراضيًا أو حسب موقعك الحالي.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Tasbih -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 p-5 sm:p-7">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <span class="section-badge">عداد تسبيح</span>
+              <h3 class="text-2xl font-bold mt-2 text-emerald-800 dark:text-emerald-300">سبحان الله</h3>
+            </div>
+            <button id="resetTasbihBtn" class="small-btn">إعادة</button>
+          </div>
+
+          <div class="mt-8 text-center">
+            <div
+              id="tasbihCount"
+              class="mx-auto w-44 h-44 rounded-full bg-gradient-to-br from-emerald-600 to-teal-500 text-white flex items-center justify-center text-6xl font-bold shadow-soft select-none"
+            >
+              0
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+              <button data-dhikr="سبحان الله" class="dhikr-btn">سبحان الله</button>
+              <button data-dhikr="الحمد لله" class="dhikr-btn">الحمد لله</button>
+              <button data-dhikr="الله أكبر" class="dhikr-btn">الله أكبر</button>
+            </div>
+
+            <button id="tasbihBtn" class="primary-btn mt-5 text-xl py-4">
+              اضغط للتسبيح
+            </button>
+
+            <p id="currentDhikr" class="mt-4 text-slate-500 dark:text-slate-400">
+              الذكر الحالي: سبحان الله
+            </p>
+          </div>
+        </div>
+
+        <!-- Prayer Times -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-emerald-100 dark:border-slate-800 p-5 sm:p-7">
+          <div>
+            <span class="section-badge">أوقات الصلاة</span>
+            <h3 class="text-2xl font-bold mt-2 text-emerald-800 dark:text-emerald-300">مواقيت اليوم</h3>
+            <p id="prayerLocation" class="text-slate-500 dark:text-slate-400 mt-1">فيينا، النمسا</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-5">
+            <input id="cityInput" class="input" placeholder="المدينة، مثال: Vienna" value="Vienna" />
+            <input id="countryInput" class="input" placeholder="الدولة، مثال: Austria" value="Austria" />
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-3">
+            <button id="loadPrayerByCityBtn" class="primary-btn">تحميل حسب المدينة</button>
+            <button id="loadPrayerByLocationBtn" class="secondary-btn">استخدم موقعي</button>
+          </div>
+
+          <p id="prayerStatus" class="mt-4 text-slate-500 dark:text-slate-400">جاري تحميل أوقات الصلاة...</p>
+
+          <div id="prayerTimes" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-5">
+            <!-- prayer cards -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-white px-4 py-10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-3">
+          <img
+            src="https://ik.imagekit.io/imgayoub/LOGO/ayoubpw.png"
+            alt="Ayoub"
+            class="w-12 h-12 rounded-2xl bg-white p-1"
+          />
+          <div>
+            <h2 class="text-2xl font-bold text-emerald-300">Ayoub</h2>
+            <p class="text-slate-400">موقع إسلامي عام</p>
+          </div>
+        </div>
+        <p class="mt-4 text-slate-300 leading-8">
+          صنع بحب من فيينا - Ayoub
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-3 text-emerald-300">روابط سريعة</h3>
+        <div class="grid gap-2">
+          <a class="footer-link" href="#home">الرئيسية</a>
+          <a class="footer-link" href="#quran">القرآن</a>
+          <a class="footer-link" href="#hadith">الأحاديث</a>
+          <a class="footer-link" href="#madhahib">المذاهب</a>
+          <a class="footer-link" href="#azkar">أذكار</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-lg mb-3 text-emerald-300">تواصل</h3>
+        <div class="grid gap-2">
+          <a class="footer-link" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="footer-link" href="mailto:contact@example.com">اتصال عبر البريد</a>
+        </div>
+        <p class="mt-5 text-sm text-slate-500">
+          تنبيه: المحتوى الفقهي للتثقيف العام، ويرجى الرجوع لأهل العلم في الفتوى.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto border-t border-slate-800 mt-8 pt-5 text-center text-slate-500">
+      © <span id="year"></span> Ayoub. جميع الحقوق محفوظة.
+    </div>
+  </footer>
+
+  <!-- Vanilla JS -->
+  <script>
+    "use strict";
+
+    /* =========================
+       Helpers
+    ========================= */
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    const normalizeArabic = (text = "") => {
+      return String(text)
+        .toLowerCase()
+        .replace(/[أإآ]/g, "ا")
+        .replace(/ة/g, "ه")
+        .replace(/ى/g, "ي")
+        .replace(/[ًٌٍَُِّْ]/g, "")
+        .trim();
+    };
+
+    const safeText = (value, fallback = "") => {
+      return value === null || value === undefined || value === "" ? fallback : String(value);
+    };
+
+    const setLoading = (el, text) => {
+      el.innerHTML = `<p class="text-slate-500 dark:text-slate-400">${text}</p>`;
+    };
+
+    /* =========================
+       Global UI
+    ========================= */
+    const menuBtn = $("#menuBtn");
+    const mobileMenu = $("#mobileMenu");
+    const darkModeBtn = $("#darkModeBtn");
+    const darkIcon = $("#darkIcon");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    $$(".mobile-link").forEach((link) => {
+      link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+    });
+
+    const applyDarkMode = () => {
+      const isDark = localStorage.getItem("ayoub-dark") === "true";
+      document.documentElement.classList.toggle("dark", isDark);
+      darkIcon.textContent = isDark ? "☀️" : "🌙";
+    };
+
+    darkModeBtn.addEventListener("click", () => {
+      const current = localStorage.getItem("ayoub-dark") === "true";
+      localStorage.setItem("ayoub-dark", String(!current));
+      applyDarkMode();
+    });
+
+    applyDarkMode();
+    $("#year").textContent = new Date().getFullYear();
+
+    /* Tailwind component classes */
+    const style = document.createElement("style");
+    style.textContent = `
+      .nav-link {
+        padding: 0.6rem 0.9rem;
+        border-radius: 1rem;
+        color: rgb(51 65 85);
+        font-weight: 700;
+        transition: 0.2s;
+      }
+      .dark .nav-link {
+        color: rgb(226 232 240);
+      }
+      .nav-link:hover {
+        background: rgb(209 250 229);
+        color: rgb(6 95 70);
+      }
+      .dark .nav-link:hover {
+        background: rgb(30 41 59);
+        color: rgb(110 231 183);
+      }
+      .mobile-link {
+        display: block;
+        padding: 0.9rem 1rem;
+        border-radius: 1rem;
+        background: rgb(236 253 245);
+        color: rgb(6 95 70);
+        font-weight: 700;
+      }
+      .dark .mobile-link {
+        background: rgb(30 41 59);
+        color: rgb(167 243 208);
+      }
+      .hero-btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 1.25rem;
+        background: rgba(255,255,255,0.16);
+        border: 1px solid rgba(255,255,255,0.25);
+        color: white;
+        font-weight: 800;
+        transition: 0.2s;
+      }
+      .hero-btn:hover {
+        background: white;
+        color: rgb(6 95 70);
+        transform: translateY(-2px);
+      }
+      .section-wrap {
+        max-width: 80rem;
+        margin-inline: auto;
+        padding: 4.5rem 1rem;
+      }
+      .section-head {
+        text-align: center;
+        max-width: 48rem;
+        margin: 0 auto 2rem;
+      }
+      .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: rgb(209 250 229);
+        color: rgb(6 95 70);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .dark .section-badge {
+        background: rgb(6 78 59);
+        color: rgb(167 243 208);
+      }
+      .section-title {
+        margin-top: 0.9rem;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.25;
+        font-weight: 900;
+        color: rgb(6 95 70);
+      }
+      .dark .section-title {
+        color: rgb(110 231 183);
+      }
+      .section-desc {
+        margin-top: 0.8rem;
+        color: rgb(71 85 105);
+        line-height: 2;
+        font-size: 1.05rem;
+      }
+      .dark .section-desc {
+        color: rgb(203 213 225);
+      }
+      .input {
+        width: 100%;
+        border-radius: 1rem;
+        border: 1px solid rgb(167 243 208);
+        background: white;
+        padding: 0.85rem 1rem;
+        outline: none;
+        transition: 0.2s;
+      }
+      .dark .input {
+        background: rgb(15 23 42);
+        border-color: rgb(51 65 85);
+        color: white;
+      }
+      .input:focus {
+        border-color: rgb(5 150 105);
+        box-shadow: 0 0 0 4px rgba(16,185,129,0.16);
+      }
+      .primary-btn {
+        width: 100%;
+        border-radius: 1rem;
+        background: rgb(4 120 87);
+        color: white;
+        padding: 0.85rem 1.2rem;
+        font-weight: 900;
+        transition: 0.2s;
+      }
+      .primary-btn:hover {
+        background: rgb(6 95 70);
+        transform: translateY(-1px);
+      }
+      .secondary-btn {
+        width: 100%;
+        border-radius: 1rem;
+        background: rgb(224 242 254);
+        color: rgb(3 105 161);
+        padding: 0.85rem 1.2rem;
+        font-weight: 900;
+        transition: 0.2s;
+      }
+      .dark .secondary-btn {
+        background: rgb(30 41 59);
+        color: rgb(125 211 252);
+      }
+      .secondary-btn:hover {
+        transform: translateY(-1px);
+      }
+      .small-btn {
+        border-radius: 0.9rem;
+        background: rgb(209 250 229);
+        color: rgb(6 95 70);
+        padding: 0.5rem 0.85rem;
+        font-weight: 800;
+        transition: 0.2s;
+      }
+      .dark .small-btn {
+        background: rgb(30 41 59);
+        color: rgb(167 243 208);
+      }
+      .small-btn:hover {
+        filter: brightness(0.97);
+      }
+      .madhhab-card {
+        background: white;
+        border: 1px solid rgb(209 250 229);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 20px 50px rgba(2, 44, 34, 0.08);
+        transition: 0.2s;
+      }
+      .dark .madhhab-card {
+        background: rgb(15 23 42);
+        border-color: rgb(30 41 59);
+      }
+      .madhhab-card:hover {
+        transform: translateY(-4px);
+      }
+      .madhhab-icon {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-radius: 1.25rem;
+        background: linear-gradient(135deg, rgb(5 150 105), rgb(14 165 233));
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 900;
+      }
+      .madhhab-title {
+        margin-top: 1rem;
+        font-size: 1.35rem;
+        font-weight: 900;
+        color: rgb(6 95 70);
+      }
+      .dark .madhhab-title {
+        color: rgb(110 231 183);
+      }
+      .madhhab-text {
+        margin-top: 0.65rem;
+        color: rgb(71 85 105);
+        line-height: 2;
+      }
+      .dark .madhhab-text {
+        color: rgb(203 213 225);
+      }
+      .table-cell {
+        padding: 1rem;
+        vertical-align: top;
+        line-height: 1.8;
+      }
+      .dhikr-btn {
+        border-radius: 1rem;
+        background: rgb(236 253 245);
+        color: rgb(6 95 70);
+        padding: 0.85rem 1rem;
+        font-weight: 900;
+        border: 1px solid rgb(167 243 208);
+        transition: 0.2s;
+      }
+      .dark .dhikr-btn {
+        background: rgb(30 41 59);
+        color: rgb(167 243 208);
+        border-color: rgb(51 65 85);
+      }
+      .dhikr-btn:hover,
+      .dhikr-btn.active {
+        background: rgb(4 120 87);
+        color: white;
+      }
+      .footer-link {
+        color: rgb(203 213 225);
+        transition: 0.2s;
+      }
+      .footer-link:hover {
+        color: rgb(110 231 183);
+        transform: translateX(-3px);
+      }
+    `;
+    document.head.appendChild(style);
+
+    /* =========================
+       Quran Section
+    ========================= */
+    const surahSearch = $("#surahSearch");
+    const surahList = $("#surahList");
+    const reloadSurahsBtn = $("#reloadSurahsBtn");
+    const surahTitle = $("#surahTitle");
+    const surahMeta = $("#surahMeta");
+    const ayahsContainer = $("#ayahsContainer");
+    const quranAudio = $("#quranAudio");
+
+    const surahFallbackNames = "الفاتحة,البقرة,آل عمران,النساء,المائدة,الأنعام,الأعراف,الأنفال,التوبة,يونس,هود,يوسف,الرعد,إبراهيم,الحجر,النحل,الإسراء,الكهف,مريم,طه,الأنبياء,الحج,المؤمنون,النور,الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الانفطار,المطففين,الانشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس"
+      .split(",")
+      .map((name, index) => ({
+        number: index + 1,
+        name,
+        englishName: "",
+        numberOfAyahs: "",
+        revelationType: ""
+      }));
+
+    let allSurahs = [];
+
+    async function loadSurahList() {
+      setLoading(surahList, "جاري تحميل السور...");
+      try {
+        const response = await fetch("https://api.alquran.cloud/v1/surah");
+        if (!response.ok) throw new Error("Quran API error");
+        const data = await response.json();
+        allSurahs = data.data || surahFallbackNames;
+      } catch (error) {
+        allSurahs = surahFallbackNames;
+      }
+
+      renderSurahList(allSurahs);
+    }
+
+    function renderSurahList(list) {
+      if (!list.length) {
+        setLoading(surahList, "لا توجد نتائج.");
+        return;
+      }
+
+      surahList.innerHTML = list
+        .map((surah) => `
+          <button
+            class="surah-btn text-right w-full rounded-2xl border border-emerald-100 dark:border-slate-800 bg-emerald-50 dark:bg-slate-800 hover:bg-emerald-700 hover:text-white transition p-3"
+            data-id="${surah.number}"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <span class="font-bold">${surah.number}. ${surah.name}</span>
+              <span class="text-xs opacity-75">${surah.numberOfAyahs ? surah.numberOfAyahs + " آية" : ""}</span>
+            </div>
+            <div class="text-xs opacity-70 mt-1">${surah.englishName || ""}</div>
+          </button>
+        `)
+        .join("");
+
+      $$(".surah-btn").forEach((btn) => {
+        btn.addEventListener("click", () => loadSurah(btn.dataset.id));
+      });
+    }
+
+    surahSearch.addEventListener("input", () => {
+      const keyword = normalizeArabic(surahSearch.value);
+      const filtered = allSurahs.filter((surah) => {
+        return normalizeArabic(surah.name).includes(keyword) ||
+          normalizeArabic(surah.englishName).includes(keyword) ||
+          String(surah.number).includes(keyword);
+      });
+      renderSurahList(filtered);
+    });
+
+    reloadSurahsBtn.addEventListener("click", loadSurahList);
+
+    async function loadSurah(id) {
+      surahTitle.textContent = "جاري تحميل السورة...";
+      surahMeta.textContent = "";
+      setLoading(ayahsContainer, "يتم الآن تحميل الآيات والتلاوة...");
+      quranAudio.removeAttribute("src");
+
+      try {
+        const [textResponse, audioResponse] = await Promise.all([
+          fetch(`https://api.alquran.cloud/v1/surah/${id}/ar`),
+          fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
+        ]);
+
+        if (!textResponse.ok) throw new Error("Surah text failed");
+
+        const textData = await textResponse.json();
+        const audioData = audioResponse.ok ? await audioResponse.json() : null;
+
+        const surah = textData.data;
+        const audioAyahs = audioData?.data?.ayahs || [];
+
+        surahTitle.textContent = `${surah.name}`;
+        surahMeta.textContent = `${surah.englishName || ""} - ${surah.numberOfAyahs} آية - ${surah.revelationType === "Meccan" ? "مكية" : "مدنية"}`;
+
+        ayahsContainer.innerHTML = surah.ayahs
+          .map((ayah) => {
+            const audio = audioAyahs.find((item) => item.numberInSurah === ayah.numberInSurah)?.audio || "";
+            return `
+              <article class="rounded-3xl border border-emerald-100 dark:border-slate-800 bg-emerald-50/70 dark:bg-slate-800 p-4 sm:p-5">
+                <div class="flex items-start justify-between gap-3">
+                  <span class="shrink-0 w-10 h-10 rounded-2xl bg-emerald-700 text-white flex items-center justify-center font-bold">
+                    ${ayah.numberInSurah}
+                  </span>
+                  ${audio ? `
+                    <button
+                      class="play-ayah small-btn"
+                      data-audio="${audio}"
+                      aria-label="تشغيل الآية"
+                    >
+                      ▶ تلاوة
+                    </button>
+                  ` : ""}
+                </div>
+                <p class="ayah-text text-2xl sm:text-3xl mt-4 text-slate-900 dark:text-white">
+                  ${ayah.text}
+                </p>
+              </article>
+            `;
+          })
+          .join("");
+
+        $$(".play-ayah").forEach((button) => {
+          button.addEventListener("click", () => {
+            quranAudio.src = button.dataset.audio;
+            quranAudio.play();
+          });
+        });
+
+        document.querySelector("#quran").scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        surahTitle.textContent = "تعذر تحميل السورة";
+        surahMeta.textContent = "يرجى المحاولة لاحقًا.";
+        ayahsContainer.innerHTML = `
+          <div class="rounded-3xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 p-5 text-red-700 dark:text-red-300">
+            حدث خطأ أثناء الاتصال بواجهة القرآن الكريم.
+          </div>
+        `;
+      }
+    }
+
+    /* =========================
+       Hadith Section
+    ========================= */
+    const hadithBook = $("#hadithBook");
+    const hadithSearch = $("#hadithSearch");
+    const hadithStatus = $("#hadithStatus");
+    const hadithList = $("#hadithList");
+    const loadHadithBtn = $("#loadHadithBtn");
+
+    let allHadiths = [];
+
+    const fallbackHadiths = {
+      bukhari: [
+        {
+          number: 1,
+          text: "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى.",
+          grade: "صحيح"
+        },
+        {
+          number: 2,
+          text: "المسلم من سلم المسلمون من لسانه ويده.",
+          grade: "صحيح"
+        },
+        {
+          number: 3,
+          text: "من كان يؤمن بالله واليوم الآخر فليقل خيرًا أو ليصمت.",
+          grade: "صحيح"
+        }
+      ],
+      muslim: [
+        {
+          number: 1,
+          text: "الدين النصيحة.",
+          grade: "صحيح"
+        },
+        {
+          number: 2,
+          text: "الطهور شطر الإيمان.",
+          grade: "صحيح"
+        },
+        {
+          number: 3,
+          text: "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه.",
+          grade: "صحيح"
+        }
+      ]
+    };
+
+    function parseHadithApi(data, book) {
+      const candidates =
+        data?.data?.hadiths ||
+        data?.data?.hadith ||
+        data?.hadiths ||
+        data?.data ||
+        [];
+
+      if (!Array.isArray(candidates)) return [];
+
+      return candidates.slice(0, 50).map((item, index) => ({
+        number: item.number || item.hadithNumber || item.id || index + 1,
+        text:
+          item.arab ||
+          item.arabic ||
+          item.hadithArabic ||
+          item.text ||
+          item.body ||
+          item.id ||
+          "نص الحديث غير متوفر.",
+        grade:
+          item.grade ||
+          item.status ||
+          item.quality ||
+          item.reference ||
+          (book === "bukhari" ? "صحيح البخاري" : "صحيح مسلم")
+      }));
+    }
+
+    async function loadHadiths() {
+      const book = hadithBook.value;
+      hadithStatus.textContent = "جاري تحميل الأحاديث...";
+      hadithList.innerHTML = "";
+
+      const urls = [
+        `https://api.hadith.sutanlab.id/books/${book}?range=1-50`,
+        `https://api.hadith.gading.dev/books/${book}?range=1-50`
+      ];
+
+      try {
+        let parsed = [];
+
+        for (const url of urls) {
+          try {
+            const response = await fetch(url);
+            if (!response.ok) continue;
+            const data = await response.json();
+            parsed = parseHadithApi(data, book);
+            if (parsed.length) break;
+          } catch (innerError) {
+            continue;
+          }
+        }
+
+        allHadiths = parsed.length ? parsed : fallbackHadiths[book];
+      } catch (error) {
+        allHadiths = fallbackHadiths[book];
+      }
+
+      renderHadiths();
+    }
+
+    function renderHadiths() {
+      const keyword = normalizeArabic(hadithSearch.value);
+      const filtered = allHadiths.filter((hadith) => {
+        return normalizeArabic(hadith.text).includes(keyword) ||
+          normalizeArabic(hadith.grade).includes(keyword) ||
+          String(hadith.number).includes(keyword);
+      });
+
+      hadithStatus.textContent = `عدد النتائج: ${filtered.length}`;
+
+      if (!filtered.length) {
+        hadithList.innerHTML = `
+          <div class="md:col-span-2 rounded-3xl bg-emerald-50 dark:bg-slate-800 p-6 text-center text-slate-500 dark:text-slate-400">
+            لا توجد نتائج مطابقة.
+          </div>
+        `;
+        return;
+      }
+
+      hadithList.innerHTML = filtered
+        .map((hadith) => `
+          <article class="rounded-3xl border border-emerald-100 dark:border-slate-800 bg-emerald-50/70 dark:bg-slate-800 p-5">
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="font-bold text-emerald-800 dark:text-emerald-300">حديث رقم ${hadith.number}</span>
+              <span class="text-xs bg-white dark:bg-slate-900 border border-emerald-100 dark:border-slate-700 rounded-full px-3 py-1">
+                ${hadith.grade}
+              </span>
+            </div>
+            <p class="text-xl leading-10 text-slate-900 dark:text-white">
+              ${hadith.text}
+            </p>
+          </article>
+        `)
+        .join("");
+    }
+
+    hadithSearch.addEventListener("input", renderHadiths);
+    hadithBook.addEventListener("change", loadHadiths);
+    loadHadithBtn.addEventListener("click", loadHadiths);
+
+    /* =========================
+       Tasbih
+    ========================= */
+    const tasbihBtn = $("#tasbihBtn");
+    const resetTasbihBtn = $("#resetTasbihBtn");
+    const tasbihCount = $("#tasbihCount");
+    const currentDhikr = $("#currentDhikr");
+    let count = Number(localStorage.getItem("ayoub-tasbih-count") || 0);
+    let dhikr = localStorage.getItem("ayoub-dhikr") || "سبحان الله";
+
+    function updateTasbih() {
+      tasbihCount.textContent = count;
+      currentDhikr.textContent = `الذكر الحالي: ${dhikr}`;
+      localStorage.setItem("ayoub-tasbih-count", String(count));
+      localStorage.setItem("ayoub-dhikr", dhikr);
+
+      $$(".dhikr-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.dhikr === dhikr);
+      });
+    }
+
+    tasbihBtn.addEventListener("click", () => {
+      count += 1;
+      updateTasbih();
+    });
+
+    resetTasbihBtn.addEventListener("click", () => {
+      count = 0;
+      updateTasbih();
+    });
+
+    $$(".dhikr-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        dhikr = btn.dataset.dhikr;
+        updateTasbih();
+      });
+    });
+
+    updateTasbih();
+
+    /* =========================
+       Prayer Times
+    ========================= */
+    const cityInput = $("#cityInput");
+    const countryInput = $("#countryInput");
+    const loadPrayerByCityBtn = $("#loadPrayerByCityBtn");
+    const loadPrayerByLocationBtn = $("#loadPrayerByLocationBtn");
+    const prayerStatus = $("#prayerStatus");
+    const prayerTimes = $("#prayerTimes");
+    const prayerLocation = $("#prayerLocation");
+
+    const prayerNames = {
+      Fajr: "الفجر",
+      Sunrise: "الشروق",
+      Dhuhr: "الظهر",
+      Asr: "العصر",
+      Maghrib: "المغرب",
+      Isha: "العشاء"
+    };
+
+    function renderPrayerTimes(timings) {
+      const keys = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+
+      prayerTimes.innerHTML = keys
+        .map((key) => `
+          <div class="rounded-3xl bg-emerald-50 dark:bg-slate-800 border border-emerald-100 dark:border-slate-700 p-4 text-center">
+            <p class="text-slate-500 dark:text-slate-400">${prayerNames[key]}</p>
+            <p class="text-2xl font-bold text-emerald-800 dark:text-emerald-300 mt-1">${timings[key] || "--:--"}</p>
+          </div>
+        `)
+        .join("");
+    }
+
+    async function loadPrayerByCity() {
+      const city = cityInput.value.trim() || "Vienna";
+      const country = countryInput.value.trim() || "Austria";
+
+      prayerStatus.textContent = "جاري تحميل أوقات الصلاة...";
+      prayerLocation.textContent = `${city}، ${country}`;
+
+      try {
+        const url = `https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&method=2`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Prayer API error");
+
+        const data = await response.json();
+        renderPrayerTimes(data.data.timings);
+        prayerStatus.textContent = `تم التحديث: ${data.data.date.readable}`;
+      } catch (error) {
+        prayerStatus.textContent = "تعذر تحميل أوقات الصلاة. تحقق من الاتصال أو اسم المدينة.";
+        prayerTimes.innerHTML = "";
+      }
+    }
+
+    function loadPrayerByLocation() {
+      if (!navigator.geolocation) {
+        prayerStatus.textContent = "المتصفح لا يدعم تحديد الموقع.";
+        return;
+      }
+
+      prayerStatus.textContent = "جاري تحديد موقعك...";
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          try {
+            const { latitude, longitude } = position.coords;
+            const url = `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=2`;
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("Prayer location API error");
+
+            const data = await response.json();
+            renderPrayerTimes(data.data.timings);
+            prayerLocation.textContent = "حسب موقعك الحالي";
+            prayerStatus.textContent = `تم التحديث: ${data.data.date.readable}`;
+          } catch (error) {
+            prayerStatus.textContent = "تعذر تحميل أوقات الصلاة حسب الموقع.";
+          }
+        },
+        () => {
+          prayerStatus.textContent = "لم يتم السماح بالوصول إلى الموقع.";
+        }
+      );
+    }
+
+    loadPrayerByCityBtn.addEventListener("click", loadPrayerByCity);
+    loadPrayerByLocationBtn.addEventListener("click", loadPrayerByLocation);
+
+    /* =========================
+       Initial Load
+    ========================= */
+    loadSurahList().then(() => {
+      loadSurah(1);
+    });
+
+    loadHadiths();
+    loadPrayerByCity();
+  </script>
+</body>
+</html>
